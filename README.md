@@ -1,10 +1,10 @@
-# Renku workshop · R / Shiny penguins
+# R / Shiny penguins
 
-The R track: fit a linear model with `Rscript` in a **Job**, and publish an interactive **R Shiny App**.
+Git a linear model with `Rscript` in a **Job**, and publish an interactive **R Shiny App**.
 
-Part of the **Renku Jobs & Apps hands-on workshop** (SDSC). Each participant submits a **Job** (non-interactive run) and publishes an **App** (public web app) from this repo.
+This project belongs to a Renku **hands-on workshop** at SDSC aiming to share how to create jobs and apps in Renku. Each participant submits a **Job** (non-interactive run) and publishes an **App** (public web app) from this repo.
 
-> **Data rule:** Renku apps run only on **public** projects. This repo uses only public or synthetic data. Never deploy Internal, Confidential or personal data as an app.
+> **Data rule:** Renku apps run only on **public** projects.
 
 ## What's inside
 
@@ -15,10 +15,16 @@ Part of the **Renku Jobs & Apps hands-on workshop** (SDSC). Each participant sub
 | `install.R` | Package list for builders that read it |
 | `data/penguins.csv` | palmerpenguins data (CC0) |
 | `Procfile` | One line that tells Renku how to start the app (`web:` binds `0.0.0.0` and `$RENKU_SESSION_PORT`) |
-| `Dockerfile` | Pre-built image for both launchers (*external image* route) |
-| `.github/workflows/image.yml` | Builds `ghcr.io/<owner>/<repo>:latest` on every push to `main` |
 
-## Exercise 1 · Job
+## Preparation
+1. Fork the code repository `https://github.com/bethcg/renku-workshp-penguins`.
+2. Create a new project in Renku with the following requirements:
+- Data connector with a shared folder in your Polybox or Switchdrive account with **read/write** permissions. [Connect a shared folder to your project](https://docs.renkulab.io/en/latest/docs/users/data/guides/connect-data/connect-shared-switchdrive-or-polybox-folder-to-project/)
+- Code repository to your fork. [Add a code repository](https://docs.renkulab.io/en/latest/docs/users/code/guides/add-code-repository-to-project/)
+- Session launcher with Create from code on top of the requirements defined in the code repository. [Create an environment with custom packages](https://docs.renkulab.io/en/latest/docs/users/compute/environment/guides/create-environment-with-custom-packages-installed/)
+
+
+## Exercise 1: Job
 
 1. In your Renku project, add a launcher of type **Job**.
 2. Choose **Create from code**. Select the code repository `renku-workshop-energy-forecasting` and set the command to:
@@ -39,7 +45,7 @@ Set the Job args to:
 
 CLI alternative: `rnk launcher list --mode non-interactive` · `rnk job start --launcher <id>` · `rnk job logs <job-id>`.
 
-## Exercise 2 · App
+## Exercise 2: App
 
 A Shiny app where you choose axes and species, toggle a per-species linear fit, and see a table of species means.
 
