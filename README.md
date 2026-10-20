@@ -27,9 +27,9 @@ This project belongs to a Renku **hands-on workshop** at SDSC aiming to share ho
 ## Exercise 1: Job
 
 1. In your Renku project, add a launcher of type **Job**.
-2. Choose **Create from code**. Select the code repository `renku-workshop-energy-forecasting` and set the command to:
+2. Choose **Create from code**. Select the code repository `renku-workshop-penguins` and set the command to:
    ```bash
-   ["Rscript","renku-workshop-penguins/app/fit.R"]
+   ["Rscript","renku-workshop-penguins/fit.R"]
    ```
 Set the Job args to:
    ```bash
