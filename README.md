@@ -6,15 +6,20 @@ This project belongs to a Renku **hands-on workshop** at SDSC aiming to share ho
 
 > **Data rule:** Renku apps run only on **public** projects.
 
-## What's inside
+## Layout
 
-| Path | Role |
-| --- | --- |
-| `fit.R` | **Job**: `lm()` on a train split, prints coefficients, R² and test RMSE, saves the model |
-| `app.R` | **App**: R Shiny explorer |
-| `install.R` | Package list for builders that read it |
-| `data/penguins.csv` | palmerpenguins data (CC0) |
-| `Procfile` | One line that tells Renku how to start the app (`web:` binds `0.0.0.0` and `$RENKU_SESSION_PORT`) |
+```
+.
+├── global.R          # libraries, Renku theme, load data once
+├── data.R            # Shiny-free load / filter / model helpers (shared with fit.R)
+├── ui.R              # shinydashboard UI: value boxes + tabs
+├── server.R          # reactive wiring; presentation only
+├── fit.R             # the JOB: Rscript fit.R --formula "..."
+├── data/penguins.csv # palmerpenguins (CC0), bundled
+├── renv.lock         # package manifest; triggers the Renku renv buildpack
+├── .Renviron         # USE_BUNDLED_LIBUV=1 so `fs` builds without libuv headers
+└── Procfile          # app entry point (binds 0.0.0.0 and RENKU_SESSION_PORT)
+```
 
 ## Preparation
 1. Fork the code repository `https://github.com/bethcg/renku-workshp-penguins`.
